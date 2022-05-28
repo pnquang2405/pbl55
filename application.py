@@ -365,7 +365,7 @@ def gen():
 @application.route('/video_feed')
 def video_feed():
     """Video streaming route. Put this in the src attribute of an img tag."""
-    return Response(gen(git a),
+    return Response(gen(),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
-# application.debug = True
-# application.run(port=5004)    
+application.debug = True
+application.run(port=5004)    
