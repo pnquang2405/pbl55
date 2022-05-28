@@ -277,12 +277,12 @@ def gen():
             phase_train_placeholder = tf.compat.v1.get_default_graph().get_tensor_by_name("phase_train:0")
             embedding_size = embeddings.get_shape()[1]
 
-            pnet, rnet, onet = align.detect_face.create_mtcnn(sess, "src/align")
+            pnet, rnet, onet = align.detect_face.create_mtcnn(sess, "align")
 
             people_detected = set()
             person_detected = collections.Counter()
 
-            cap  = VideoStream(1).start()
+            cap  = VideoStream("768x576.avi").start()
 
             check = False
             name = ""
@@ -365,7 +365,7 @@ def gen():
 @application.route('/video_feed')
 def video_feed():
     """Video streaming route. Put this in the src attribute of an img tag."""
-    return Response(gen(),
+    return Response(gen(git a),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 # application.debug = True
 # application.run(port=5004)    
