@@ -288,7 +288,7 @@ def gen():
             name = ""
             while (True): 
                 frame = cap.read()
-                frame = imutils.resize(frame, width=600)
+                # frame = imutils.resize(frame, width=600)
                 frame = cv2.flip(frame, 1)
 
                 bounding_boxes, _ = align.detect_face.detect_face(frame, MINSIZE, pnet, rnet, onet, THRESHOLD, FACTOR)
@@ -367,5 +367,5 @@ def video_feed():
     """Video streaming route. Put this in the src attribute of an img tag."""
     return Response(gen(),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
-# application.debug = True
-# application.run(port=5004)    
+application.debug = True
+application.run(port=5004)    
