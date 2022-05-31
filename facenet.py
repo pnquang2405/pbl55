@@ -368,9 +368,7 @@ def load_model(model, input_map=None):
     
     model_exp = os.path.expanduser(model)
     if (os.path.isfile(model_exp)):
-        # tf.saved_model.load(model_exp, tags=['serve'])
         print('Model filename: %s' % model_exp)
-        print("1111111111111111111111111111")
         with tf.io.gfile.GFile(model_exp,'rb') as f:
             graph_def = tf.compat.v1.GraphDef()
             graph_def.ParseFromString(f.read())
