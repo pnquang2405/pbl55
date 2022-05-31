@@ -1,12 +1,14 @@
+# protobuf==3.19.4
+# tensorboard==2.8.0
+# keras==2.8.0
+tensorflow_cpu==2.8.0
 Flask==2.1.2
-imageio==2.16.2
-imutils==0.5.4
-numpy==1.22.3
-opencv-contrib-python-headless
-pyrebase
+imageio
+imutils
+numpy
+# opencv-contrib-python-headless
 Pyrebase4
-scikit_learn==1.1.1
-scipy==1.8.0
-six==1.16.0
-tensorflow-cpu
-PyJWT
+scikit_learn
+scipy
+six
+
