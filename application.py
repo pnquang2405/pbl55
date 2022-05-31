@@ -242,18 +242,18 @@ def gen():
         
     
 
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--path', help='Path of the video you want to test on.', default=0)
-    args = parser.parse_args()
+    # parser = argparse.ArgumentParser()
+    # parser.add_argument('--path', help='Path of the video you want to test on.', default=0)
+    # args = parser.parse_args()
 
     MINSIZE = 20
     THRESHOLD = [0.6, 0.7, 0.7]
     FACTOR = 0.709
-    IMAGE_SIZE = 182
+    # IMAGE_SIZE = 182
     INPUT_IMAGE_SIZE = 160
-    CLASSIFIER_PATH = 'models/facemodel.pkl' 
-    VIDEO_PATH = args.path
-    FACENET_MODEL_PATH = 'models/20180402-114759.pb'
+    CLASSIFIER_PATH = 'facemodel.pkl' 
+    # VIDEO_PATH = args.path
+    FACENET_MODEL_PATH = '20180402-114759.pb'
 
     # Load The Custom Classifier
     with open(CLASSIFIER_PATH, 'rb') as file:
