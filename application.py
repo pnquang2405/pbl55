@@ -282,7 +282,7 @@ def gen():
             people_detected = set()
             person_detected = collections.Counter()
 
-            cap  = VideoStream("768x576.avi").start()
+            cap  = VideoStream('https://filesamples.com/samples/video/mjpeg/sample_1280x720_surfing_with_audio.mjpeg').start()
 
             check = False
             name = ""
