@@ -120,8 +120,8 @@ def SentData(name,frame,count1):
 
 #     with tf.Graph().as_default():
 
-#         gpu_options = tf.compat.v1.GPUOptions(per_process_gpu_memory_fraction=0.6)
-#         sess = tf.compat.v1.Session(config=tf.compat.v1.ConfigProto(gpu_options=gpu_options, log_device_placement=False))
+#         gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.6)
+#         sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options, log_device_placement=False))
 
 #         with sess.as_default():
 
@@ -130,9 +130,9 @@ def SentData(name,frame,count1):
 #             facenet.load_model(FACENET_MODEL_PATH)  
 
 #             # Get input and output tensors
-#             images_placeholder = tf.compat.v1.get_default_graph().get_tensor_by_name("input:0")
-#             embeddings = tf.compat.v1.get_default_graph().get_tensor_by_name("embeddings:0")
-#             phase_train_placeholder = tf.compat.v1.get_default_graph().get_tensor_by_name("phase_train:0")
+#             images_placeholder = tf.get_default_graph().get_tensor_by_name("input:0")
+#             embeddings = tf.get_default_graph().get_tensor_by_name("embeddings:0")
+#             phase_train_placeholder = tf.get_default_graph().get_tensor_by_name("phase_train:0")
 #             embedding_size = embeddings.get_shape()[1]
 
 #             pnet, rnet, onet = align.detect_face.create_mtcnn(sess, "src/align")
@@ -262,8 +262,8 @@ def gen():
 
     with tf.Graph().as_default():
 
-        gpu_options = tf.compat.v1.GPUOptions(per_process_gpu_memory_fraction=0.6)
-        sess = tf.compat.v1.Session(config=tf.compat.v1.ConfigProto(gpu_options=gpu_options, log_device_placement=False))
+        gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.6)
+        sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options, log_device_placement=False))
 
         with sess.as_default():
 
@@ -272,9 +272,9 @@ def gen():
             facenet.load_model(FACENET_MODEL_PATH)  
 
             # Get input and output tensors
-            images_placeholder = tf.compat.v1.get_default_graph().get_tensor_by_name("input:0")
-            embeddings = tf.compat.v1.get_default_graph().get_tensor_by_name("embeddings:0")
-            phase_train_placeholder = tf.compat.v1.get_default_graph().get_tensor_by_name("phase_train:0")
+            images_placeholder = tf.get_default_graph().get_tensor_by_name("input:0")
+            embeddings = tf.get_default_graph().get_tensor_by_name("embeddings:0")
+            phase_train_placeholder = tf.get_default_graph().get_tensor_by_name("phase_train:0")
             embedding_size = embeddings.get_shape()[1]
 
             pnet, rnet, onet = align.detect_face.create_mtcnn(sess, "align")

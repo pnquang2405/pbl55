@@ -41,9 +41,7 @@ import re
 from tensorflow.python.platform import gfile
 import math
 from six import iteritems
-from tensorflow.python.platform import gfile
-from tensorflow.core.protobuf import saved_model_pb2
-from tensorflow.python.util import compat
+
 def triplet_loss(anchor, positive, negative, alpha):
     """Calculate the triplet loss according to the FaceNet paper
     
@@ -372,7 +370,7 @@ def load_model(model, input_map=None):
     if (os.path.isfile(model_exp)):
 
         # graph = tf.Graph()
-        # graphDef = tf.compat.v1.GraphDef()
+        # graphDef = tf.GraphDef()
         # with open(model_exp, "rb") as graphFile:
         #     graphDef.ParseFromString(graphFile.read())
 
@@ -383,8 +381,8 @@ def load_model(model, input_map=None):
         print('Model filename: %s' % model_exp)
         print("1111111111111111111111111111111111111111111")
         # with tf.io.gfile.GFile(model_exp,'rb') as f:
-        with tf.compat.v2.io.gfile.GFile(model_exp,'rb') as f:
-            graph_def = tf.compat.v1.GraphDef()
+        with tf.io.gfile.GFile(model_exp,'rb') as f:
+            graph_def = tf.GraphDef()
             graph_def.ParseFromString(f.read())
             tf.import_graph_def(graph_def, input_map=input_map, name='')
     else:
