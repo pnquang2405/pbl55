@@ -1,5 +1,5 @@
 
-tensorflow_cpu
+tensorflow_cpu==1.15
 Flask==2.1.2
 imageio
 imutils
