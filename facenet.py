@@ -41,7 +41,9 @@ import re
 from tensorflow.python.platform import gfile
 import math
 from six import iteritems
-
+from tensorflow.python.platform import gfile
+from tensorflow.core.protobuf import saved_model_pb2
+from tensorflow.python.util import compat
 def triplet_loss(anchor, positive, negative, alpha):
     """Calculate the triplet loss according to the FaceNet paper
     
@@ -365,14 +367,20 @@ def split_dataset(dataset, split_ratio, min_nrof_images_per_class, mode):
 def load_model(model, input_map=None):
     # Check if the model is a model directory (containing a metagraph and a checkpoint file)
     #  or if it is a protobuf file with a frozen graph
-    
     model_exp = os.path.expanduser(model)
+  
     if (os.path.isfile(model_exp)):
-        print('Model filename: %s' % model_exp)
-        with tf.io.gfile.GFile(model_exp,'rb') as f:
-            graph_def = tf.compat.v1.GraphDef()
-            graph_def.ParseFromString(f.read())
-            tf.import_graph_def(graph_def, input_map=input_map, name='')
+        model_filename =model_exp
+        with gfile.FastGFile(model_filename, 'rb') as f:
+            data = compat.as_bytes(f.read())
+            sm = saved_model_pb2.SavedModel()
+            sm.ParseFromString(data)
+            tf.import_graph_def(sm.meta_graphs[0].graph_def, input_map=input_map, name='')
+        # print('Model filename: %s' % model_exp)
+        # with tf.io.gfile.GFile(model_exp,'rb') as f:
+        #     graph_def = tf.compat.v1.GraphDef()
+        #     graph_def.ParseFromString(f.read())
+        #     tf.import_graph_def(graph_def, input_map=input_map, name='')
     else:
         print('Model directory: %s' % model_exp)
         meta_file, ckpt_file = get_model_filenames(model_exp)
