@@ -2,7 +2,7 @@ tensorflow==1.15.5
 keras==2.3.1
 scipy==1.1.0
 scikit-learn
-opencv-python
+opencv-python-headless
 h5py
 matplotlib
 Pillow
