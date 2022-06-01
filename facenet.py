@@ -370,17 +370,22 @@ def load_model(model, input_map=None):
     model_exp = os.path.expanduser(model)
   
     if (os.path.isfile(model_exp)):
-        model_filename =model_exp
-        with gfile.FastGFile(model_filename, 'rb') as f:
-            data = compat.as_bytes(f.read())
-            sm = saved_model_pb2.SavedModel()
-            sm.ParseFromString(data)
-            tf.import_graph_def(sm.meta_graphs[0].graph_def, input_map=input_map, name='')
-        # print('Model filename: %s' % model_exp)
+
+        # graph = tf.Graph()
+        # graphDef = tf.GraphDef()
+        # with open([model_exp], "rb") as graphFile:
+        #     graphDef.ParseFromString(graphFile.read())
+
+        # with graph.as_default():
+        #     tf.import_graph_def(graphDef)
+
+
+        print('Model filename: %s' % model_exp)
         # with tf.io.gfile.GFile(model_exp,'rb') as f:
-        #     graph_def = tf.compat.v1.GraphDef()
-        #     graph_def.ParseFromString(f.read())
-        #     tf.import_graph_def(graph_def, input_map=input_map, name='')
+        with tf.compat.v2.io.gfile.GFile(model_exp,'rb') as f:
+            graph_def = tf.compat.v1.GraphDef()
+            graph_def.ParseFromString(f.read())
+            tf.import_graph_def(graph_def, input_map=input_map, name='')
     else:
         print('Model directory: %s' % model_exp)
         meta_file, ckpt_file = get_model_filenames(model_exp)
