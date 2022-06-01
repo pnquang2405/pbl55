@@ -11,3 +11,6 @@ Pillow
 requests
 psutil
 imutils
+imageio
+Pyrebase4
+six
