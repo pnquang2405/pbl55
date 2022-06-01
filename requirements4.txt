@@ -1,0 +1,17 @@
+protobuf==3.6.1
+tensorflow==1.15.5
+keras==2.3.1
+scipy==1.1.0
+
+scikit-learn
+opencv-contrib-python-headless
+h5py
+matplotlib
+Pillow
+requests
+psutil
+imutils
+imageio
+Pyrebase4
+six
+Flask\
