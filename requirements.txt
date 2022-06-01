@@ -14,3 +14,4 @@ imutils
 imageio
 Pyrebase4
 six
+Flask==2.1.2
